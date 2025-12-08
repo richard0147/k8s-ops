@@ -10,3 +10,5 @@ spec:
           env:
             - name: ENV
               value: stage
+            - name: TEST1
+              value: TEST1
