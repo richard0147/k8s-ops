@@ -25,16 +25,16 @@ spec:
         region: '{{labels.region}}'                # 来自 yaml
         cluster: '{{name}}'
         env: '{{labels.env}}'                      # 来自 yaml
-        appGroup: '{{path.basename}}'
+        appGroup: '{{.path.basename}}'
     spec:
-      project: '{{path.basename}}'                 # 或绑定具体 Project
+      project: default              # 或绑定具体 Project
       source:
         repoURL: https://github.com/richard0147/k8s-ops.git
         targetRevision: HEAD
-        path: 'overlays/{{name}}/{{path.basename}}'
+        path: 'overlays/{{name}}/{{.path.basename}}'
       destination:
         server: '{{server}}'                # 来自 json
-        namespace: '{{path.basename}}'
+        namespace: '{{.path.basename}}'
       syncPolicy:
         automated:
           prune: true
