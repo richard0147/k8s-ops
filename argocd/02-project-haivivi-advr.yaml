@@ -4,7 +4,7 @@ metadata:
   name: haivivi-advr
   namespace: argocd
 spec:
-  description: haivivi-test 业务线
+  description: haivivi-advr 业务线
   sourceRepos:
     - https://github.com/richard0147/k8s-ops.git  # 白名单仓库
   destinations:
