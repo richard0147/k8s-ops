@@ -5,6 +5,5 @@ labels:
   region: cn
   az: shanghai
   env: prod
-appSyncPolicy:
-  automated:
-    selfHeal: false
+autoSync: true
+selfHeal: true
