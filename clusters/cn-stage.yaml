@@ -1,0 +1,10 @@
+clusterName: cn-stage
+consoleName: cn-haivivi-stage-vke-sh
+server: https://kubernetes.default.svc
+labels:
+  region: cn
+  az: shanghai
+  env: stage
+appSyncPolicy:
+  automated:
+    selfHeal: true

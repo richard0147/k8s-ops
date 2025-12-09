@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: haivivi-advr
+  namespace: argocd
+spec:
+  description: haivivi-test 业务线
+  sourceRepos:
+    - https://github.com/richard0147/k8s-ops.git  # 白名单仓库
+  destinations:
+    - namespace: 'haivivi-advr' # 白名单命名空间
+      server: 'https://kubernetes.default.svc' # 白名单集群
+    - namespace: 'haivivi-advr'
+      server: 'https://cn-stage-vke.k8s.mycorp.com'
+  clusterResourceWhitelist: []   # 禁止改集群级资源
+  roles:
+    - name: team-lead
+      policies:
+        - p, proj:checkout:team-lead, applications, *, checkout/*, allow

@@ -9,6 +9,6 @@ spec:
         - name: syw-test
           env:
             - name: ENV
-              value: stage12
+              value: prod
             - name: NS
               value: test

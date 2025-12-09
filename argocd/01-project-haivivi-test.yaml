@@ -1,0 +1,19 @@
+apiVersion: argoproj.io/v1alpha1
+kind: AppProject
+metadata:
+  name: haivivi-test
+  namespace: argocd
+spec:
+  description: haivivi-test 业务线
+  sourceRepos:
+    - https://github.com/richard0147/k8s-ops.git
+  destinations:
+    - namespace: 'haivivi-test'
+      server: 'https://kubernetes.default.svc'
+    - namespace: 'haivivi-test'
+      server: 'https://cn-stage-vke.k8s.mycorp.com'
+  clusterResourceWhitelist: []   # 禁止改集群级资源
+  roles:
+    - name: team-lead
+      policies:
+        - p, proj:checkout:team-lead, applications, *, checkout/*, allow

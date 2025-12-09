@@ -1,0 +1,10 @@
+cluster-name: cn-prod
+console-name: cn-haivivi-prod-vke-sh
+server: https://cn-prod-vke.k8s.mycorp.com
+labels:
+  region: cn
+  az: shanghai
+  env: prod
+appSyncPolicy:
+  automated:
+    selfHeal: false
