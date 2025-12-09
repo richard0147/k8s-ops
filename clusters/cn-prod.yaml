@@ -1,9 +1,0 @@
-clusterName: cn-prod
-consoleName: cn-haivivi-prod-vke-sh
-server: https://118.196.42.4:6443
-labels:
-  region: cn
-  az: shanghai
-  env: prod
-autoSync: true
-selfHeal: true
