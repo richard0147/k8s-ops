@@ -11,7 +11,7 @@ spec:
     - namespace: 'haivivi-advr' # 白名单命名空间
       server: 'https://kubernetes.default.svc' # 白名单集群
     - namespace: 'haivivi-advr'
-      server: 'https://cn-stage-vke.k8s.mycorp.com'
+      server: 'https://cn-prod-vke.k8s.mycorp.com'
   clusterResourceWhitelist: []   # 禁止改集群级资源
   roles:
     - name: team-lead

@@ -11,7 +11,7 @@ spec:
     - namespace: 'haivivi-test'
       server: 'https://kubernetes.default.svc'
     - namespace: 'haivivi-test'
-      server: 'https://cn-stage-vke.k8s.mycorp.com'
+      server: 'https://cn-prod-vke.k8s.mycorp.com'
   clusterResourceWhitelist: []   # 禁止改集群级资源
   roles:
     - name: team-lead

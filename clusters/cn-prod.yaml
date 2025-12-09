@@ -1,5 +1,5 @@
-cluster-name: cn-prod
-console-name: cn-haivivi-prod-vke-sh
+clusterName: cn-prod
+consoleName: cn-haivivi-prod-vke-sh
 server: https://cn-prod-vke.k8s.mycorp.com
 labels:
   region: cn

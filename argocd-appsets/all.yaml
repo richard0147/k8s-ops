@@ -35,16 +35,16 @@ spec:
       destination:
         server: '{{server}}'                # 来自 json
         namespace: '{{path.basename}}'
-#      syncPolicy:
-#        automated:
-#          prune: true
-#          selfHeal: {{if eq labels.env "stage"}}true{{else}}false{{end}}
-#        syncOptions:
-#          - CreateNamespace=true
-  templatePatch: |
-    spec:
-    {{- if autoSync }}
       syncPolicy:
         automated:
-          selfHeal: {{ selfHeal }}
-    {{- end }}
+          prune: true
+          selfHeal: true
+        syncOptions:
+          - CreateNamespace=true
+#  templatePatch: |
+#    spec:
+#    {{- if autoSync }}
+#      syncPolicy:
+#        automated:
+#          selfHeal: {{ selfHeal }}
+#    {{- end }}
