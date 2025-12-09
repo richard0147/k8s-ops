@@ -9,9 +9,7 @@ spec:
     - https://github.com/richard0147/k8s-ops.git  # 白名单仓库
   destinations:
     - namespace: 'haivivi-advr' # 白名单命名空间
-      server: 'https://kubernetes.default.svc' # 白名单集群
-    - namespace: 'haivivi-advr'
-      server: 'https://cn-prod-vke.k8s.mycorp.com'
+      server: 'https://118.196.42.4:6443' # 白名单集群
   clusterResourceWhitelist: []   # 禁止改集群级资源
   roles:
     - name: team-lead

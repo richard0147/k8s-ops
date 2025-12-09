@@ -17,13 +17,13 @@ spec:
         repoURL: https://github.com/richard0147/k8s-ops.git
         revision: HEAD
         directories:
-          - path: "overlays/{{clusterName}}/*"        # name = 集群名
+          - path: "overlays/{{name}}/*"        # name = 集群名
   template:
     metadata:
-      name: '{{clusterName}}-{{path.basename}}'   # cn-prod-vke-checkout
+      name: '{{name}}-{{.path.basename}}'   # cn-prod-haivivi-test
       labels:
         region: '{{labels.region}}'                # 来自 yaml
-        cluster: '{{clusterName}}'
+        cluster: '{{name}}'
         env: '{{labels.env}}'                      # 来自 yaml
         appGroup: '{{path.basename}}'
     spec:
@@ -31,7 +31,7 @@ spec:
       source:
         repoURL: https://github.com/richard0147/k8s-ops.git
         targetRevision: HEAD
-        path: 'overlays/{{clusterName}}/{{path.basename}}'
+        path: 'overlays/{{name}}/{{path.basename}}'
       destination:
         server: '{{server}}'                # 来自 json
         namespace: '{{path.basename}}'
@@ -41,10 +41,3 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
-#  templatePatch: |
-#    spec:
-#    {{- if autoSync }}
-#      syncPolicy:
-#        automated:
-#          selfHeal: {{ selfHeal }}
-#    {{- end }}
