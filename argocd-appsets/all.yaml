@@ -5,6 +5,7 @@ metadata:
   name: all
   namespace: argocd
 spec:
+  goTemplate: true
   generators:
     # ① 集群维度：读 Git 文件 → 产生集群变量
     - git:
@@ -17,25 +18,27 @@ spec:
         repoURL: https://github.com/richard0147/k8s-ops.git
         revision: HEAD
         directories:
-          - path: "overlays/{{name}}/*"        # name = 集群名
+          - path: "overlays/{{.name}}/*"        # name = 集群名
         pathParamPrefix: "ns"
   template:
     metadata:
-      name: '{{name}}-haivivi-test'   # cn-prod-haivivi-test
+      name: '{{.name}}-haivivi-test'   # cn-prod-haivivi-test
+      annotations:
+        test: '{{.ns.path.basename}}'
       labels:
-        region: '{{labels.region}}'                # 来自 yaml
-        cluster: '{{name}}'
-        env: '{{labels.env}}'                      # 来自 yaml
-        appGroup: '{{ns.path.basename}}'
+        region: '{{.labels.region}}'                # 来自 yaml
+        cluster: '{{.name}}'
+        env: '{{.labels.env}}'                      # 来自 yaml
+#        appGroup: '{{ns.path.basename}}'
     spec:
       project: default              # 或绑定具体 Project
       source:
         repoURL: https://github.com/richard0147/k8s-ops.git
         targetRevision: HEAD
-        path: 'overlays/{{name}}/{{ns.path.basename}}'
+        path: 'overlays/{{.name}}/haivivi-test'
       destination:
-        server: '{{server}}'                # 来自 json
-        namespace: '{{ns.path.basename}}'
+        server: '{{.server}}'                # 来自 json
+        namespace: haivivi-test
       syncPolicy:
         automated:
           prune: true
