@@ -9,29 +9,31 @@ spec:
   generators:
     - matrix:
         generators:
-           # ① 集群维度：读 Git 文件 → 产生集群变量
-          - git:
-              repoURL: https://github.com/richard0147/k8s-ops.git
-              revision: HEAD
-              files:
-                - path: "clusters/*.yaml"
-          # ② 命名空间维度：扫描集群下所有 NS
-          - git:
-              pathParamPrefix: "ns"
-              repoURL: https://github.com/richard0147/k8s-ops.git
-              revision: HEAD
-              directories:
-                - path: "overlays/{{.name}}/*"        # name = 集群名
-#          - list:
-#              elements:
-#                - name: cn-stage
-#                  url: https://kubernetes.default.svc
-#          - list:
-#              elements:
-#                - namespace: haivivi-test
-#                  isHot: "true"
-#                - namespace: haivivi-stage
-#                  isHot: "false"
+#           # ① 集群维度：读 Git 文件 → 产生集群变量
+#          - git:
+#              repoURL: https://github.com/richard0147/k8s-ops.git
+#              revision: HEAD
+#              files:
+#                - path: "clusters/*.yaml"
+#          # ② 命名空间维度：扫描集群下所有 NS
+#          - git:
+#              pathParamPrefix: "ns"
+#              repoURL: https://github.com/richard0147/k8s-ops.git
+#              revision: HEAD
+#              directories:
+#                - path: "overlays/{{.name}}/*"        # name = 集群名
+          - list:
+              elements:
+                - name: cn-stage
+                  server: https://118.196.42.4:6443
+          - list:
+              elements:
+                - ns:
+                    path:
+                      basename: haivivi-test
+                  labels:
+                    region: shanghai
+                    env: stage
   template:
     metadata:
       name: '{{.name}}-{{.ns.path.basename}}'   # cn-prod-haivivi-test
@@ -41,14 +43,16 @@ spec:
         env: '{{.labels.env}}'
         appGroup: '{{.ns.path.basename}}'
     spec:
-      project: "{{.ns.path.basename}}"              # 或绑定具体 Project
+      project: default              # 或绑定具体 Project
+#      project: "{{.ns.path.basename}}"              # 或绑定具体 Project
       source:
         repoURL: https://github.com/richard0147/k8s-ops.git
         targetRevision: HEAD
         path: 'overlays/{{.name}}/{{.ns.path.basename}}'
       destination:
         server: '{{.server}}'                # 来自 json
-        namespace: haivivi-test
+        namespace: default
+#        namespace: '{{.ns.path.basename}}'
       syncPolicy:
         automated:
           prune: true

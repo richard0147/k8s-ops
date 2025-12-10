@@ -14,4 +14,4 @@ spec:
   roles:
     - name: team-lead
       policies:
-        - p, proj:checkout:team-lead, applications, *, checkout/*, allow
+        - p, proj:haivivi-test:team-lead, applications, *, haivivi-test/*, allow
