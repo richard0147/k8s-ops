@@ -1,9 +1,9 @@
-name: cn-prod
-consoleName: cn-haivivi-prod-vke-sh
+name: cn-stage
+consoleName: cn-haivivi-stage-vke-sh
 server: https://kubernetes.default.svc
 labels:
   region: cn
   az: shanghai
-  env: prod
+  env: stage
 autoSync: true
 selfHeal: true
