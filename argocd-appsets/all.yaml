@@ -44,8 +44,8 @@ spec:
         env: '{{.labels.env}}'
         appGroup: '{{.ns.path.basename}}'
     spec:
-      project: default              # 或绑定具体 Project
-#      project: "{{.ns.path.basename}}"              # 或绑定具体 Project
+#      project: default              # 或绑定具体 Project
+      project: "{{.ns.path.basename}}"              # 或绑定具体 Project
       source:
         repoURL: https://github.com/richard0147/k8s-ops.git
         targetRevision: HEAD
