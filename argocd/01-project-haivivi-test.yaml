@@ -9,7 +9,9 @@ spec:
     - https://github.com/richard0147/k8s-ops.git
   destinations:
     - namespace: 'haivivi-test'
-      server: 'https://118.196.42.4:6443'
+      server: 'https://kubernetes.default.svc'
+    - namespace: 'haivivi-test'
+      server: 'https://118.196.39.119:6443'
   clusterResourceWhitelist: []   # 禁止改集群级资源
   roles:
     - name: team-lead
