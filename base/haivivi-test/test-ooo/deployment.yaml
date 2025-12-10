@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: test-ooo
+  labels:
+    app: test-ooo
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: test-ooo
+  template:
+    metadata:
+      name: test-ooo
+      labels:
+        app: test-ooo
+    spec:
+      containers:
+        - name: test-ooo
+          image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx:latest
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 80
+              protocol: TCP
+      restartPolicy: Always
+

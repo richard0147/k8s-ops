@@ -7,6 +7,7 @@ namespace: haivivi-test
 
 resources:                 # ← 决定“发哪些”
   - ../../../base/haivivi-test/test-project
+  - ../../../base/haivivi-test/test-ooo
 
 #components:                # ← 插上“公共补丁”
 #  - ../../../components/cn-stage/
