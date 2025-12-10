@@ -12,3 +12,5 @@ spec:
               value: stage12
             - name: NS
               value: test
+            - name: NS2
+              value: "1210"
