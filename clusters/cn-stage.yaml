@@ -7,3 +7,4 @@ labels:
   env: stage
 autoSync: true
 selfHeal: true
+prune: true

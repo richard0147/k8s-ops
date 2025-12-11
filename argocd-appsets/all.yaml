@@ -60,3 +60,10 @@ spec:
           selfHeal: true
         syncOptions:
           - CreateNamespace=true
+  templatePatch: |
+    spec:
+      syncPolicy:
+        automated:
+          enabled: {{ .autoSync }}
+          prune: {{ .prune }}
+          selfHeal: {{ .selfHeal }}
