@@ -11,7 +11,11 @@ resources:                 # ← 决定“发哪些”
 #components:                # ← 插上“公共补丁”
 #  - ../../../components/cn-stage/
 
+images:
+  - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
+    newTag: 1.25.5
+
 patches:                   # ← 本组本环境特殊补丁
   - path: patches/syw-test-replica.yaml
-  - path: patches/syw-test-image.yaml
+#  - path: patches/syw-test-image.yaml
   - path: patches/syw-test-env.yaml

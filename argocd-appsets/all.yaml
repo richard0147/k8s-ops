@@ -54,10 +54,12 @@ spec:
         server: '{{.server}}'                # 来自 json
 #        namespace: default
         namespace: '{{.ns.path.basename}}'
+      revisionHistoryLimit: 3
       syncPolicy:
         automated:
-          prune: true
-          selfHeal: true
+          enabled: false
+          prune: false
+          selfHeal: false
         syncOptions:
           - CreateNamespace=true
   templatePatch: |
