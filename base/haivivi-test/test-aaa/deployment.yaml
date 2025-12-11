@@ -1,22 +1,22 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: test-ooo
+  name: test-aaa
   labels:
-    app: test-ooo
+    app: test-aaa
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: test-ooo
+      app: test-aaa
   template:
     metadata:
-      name: test-ooo
+      name: test-aaa
       labels:
-        app: test-ooo
+        app: test-aaa
     spec:
       containers:
-        - name: test-ooo
+        - name: test-aaa
           image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx:latest
           imagePullPolicy: IfNotPresent
           ports:
