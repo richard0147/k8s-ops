@@ -7,4 +7,4 @@ labels:
   env: prod
 autoSync: false
 selfHeal: false
-prune: false
+prune: true
