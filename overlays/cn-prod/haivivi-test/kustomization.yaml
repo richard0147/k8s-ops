@@ -7,7 +7,7 @@ namespace: haivivi-test
 
 resources:
   - ../../../base/haivivi-test/test-project
-  - ../../../base/haivivi-test/test-ooo
+#  - ../../../base/haivivi-test/test-ooo
 #  - ../../../base/haivivi-test/test-aaa
 
 #components:
