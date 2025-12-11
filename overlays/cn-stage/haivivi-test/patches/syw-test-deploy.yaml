@@ -13,7 +13,7 @@ spec:
               value: stage
           resources:
             requests:
-              cpu: 100m
+              cpu: 120m
               memory: 256Mi
             limits:
               cpu: 400m
