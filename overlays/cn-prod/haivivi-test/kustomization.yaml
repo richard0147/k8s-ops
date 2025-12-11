@@ -5,13 +5,13 @@ namespace: haivivi-test
 #  cluster: prod-asia
 #  env: prod
 
-resources:                 # ← 决定“发哪些”
+resources:
   - ../../../base/haivivi-test/test-project
   - ../../../base/haivivi-test/test-ooo
-  - ../../../base/haivivi-test/test-aaa
+#  - ../../../base/haivivi-test/test-aaa
 
-#components:                # ← 插上“公共补丁”
+#components:
 #  - ../../../components/cn-stage/
 
-patches:                   # ← 本组本环境特殊补丁
+patches:
   - path: patches/syw-test-replica.yaml
