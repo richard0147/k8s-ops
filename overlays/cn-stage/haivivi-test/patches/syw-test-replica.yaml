@@ -10,5 +10,3 @@ spec:
           env:
             - name: ENV
               value: stage12
-            - name: NS
-              value: test

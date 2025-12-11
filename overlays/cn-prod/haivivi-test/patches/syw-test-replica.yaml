@@ -9,4 +9,4 @@ spec:
         - name: syw-test
           env:
             - name: ENV
-              value: prod
+              value: prod2

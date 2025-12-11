@@ -9,4 +9,4 @@ spec:
         - name: syw-test
           env:
             - name: ENV
-              value: stage
+              value: stage2
