@@ -13,3 +13,5 @@ resources:                 # ← 决定“发哪些”
 
 patches:                   # ← 本组本环境特殊补丁
   - path: patches/syw-test-replica.yaml
+  - path: patches/syw-test-image.yaml
+  - path: patches/syw-test-env.yaml

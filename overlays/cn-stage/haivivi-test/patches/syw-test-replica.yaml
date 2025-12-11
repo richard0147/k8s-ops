@@ -3,10 +3,4 @@ kind: Deployment
 metadata:
   name: syw-test
 spec:
-  template:
-    spec:
-      containers:
-        - name: syw-test
-          env:
-            - name: ENV
-              value: stage121
+  replicas: 3
