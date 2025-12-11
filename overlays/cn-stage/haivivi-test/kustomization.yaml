@@ -1,21 +1,32 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
-#namespace: haivivi
-#commonLabels:
-#  cluster: prod-asia
-#  env: prod
+# kustomization中不用定义ns，直接使用argocd的
+# namespace: haivivi-test
+
+# 统一前缀
 namePrefix: cn-stage-
 
-resources:                 # ← 决定“发哪些”
+# 资源列表
+resources:
   - ../../../base/haivivi-test/test-project
 
-#components:                # ← 插上“公共补丁”
+# 公共补丁
+#components:
 #  - ../../../components/cn-stage/
 
+# 标签
+labels:
+  - pairs:
+      env: stage
+      region: cn
+      az: shanghai
+
+# 镜像版本
 images:
   - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
     newTag: 1.25.5
 
-patches:                   # ← 本组本环境特殊补丁
+# 特殊补丁
+patches:
   - path: patches/syw-test-replica.yaml
   - path: patches/syw-test-env.yaml

@@ -8,9 +8,6 @@ spec:
   sourceRepos:
     - https://github.com/richard0147/k8s-ops.git
   destinations:
-    #建议把default写进去，这样kustomization中就不用定义ns了，直接使用argocd的
-    - namespace: 'default'
-    - server: 'https://kubernetes.default.svc'
     - namespace: 'haivivi-test'
       server: 'https://kubernetes.default.svc'
     - namespace: 'haivivi-test'
