@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
         - name: syw-test
-          image: libiary/nginx:latest
+          image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 80

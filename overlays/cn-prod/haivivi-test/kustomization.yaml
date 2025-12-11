@@ -12,6 +12,9 @@ resources:
 
 #components:
 #  - ../../../components/cn-stage/
+images:
+  - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
+    newTag: latest
 
 patches:
   - path: patches/syw-test-replica.yaml

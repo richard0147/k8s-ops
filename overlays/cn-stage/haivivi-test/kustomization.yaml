@@ -12,7 +12,7 @@ resources:                 # ← 决定“发哪些”
 #  - ../../../components/cn-stage/
 
 images:
-  - name: libiary/nginx:latest
+  - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
     newTag: 1.25.5
 
 patches:                   # ← 本组本环境特殊补丁
