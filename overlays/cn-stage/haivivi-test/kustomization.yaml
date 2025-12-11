@@ -4,6 +4,7 @@ namespace: haivivi-test
 #commonLabels:
 #  cluster: prod-asia
 #  env: prod
+namePrefix: cn-stage-haivivi-test-
 
 resources:                 # ← 决定“发哪些”
   - ../../../base/haivivi-test/test-project
@@ -17,5 +18,4 @@ images:
 
 patches:                   # ← 本组本环境特殊补丁
   - path: patches/syw-test-replica.yaml
-#  - path: patches/syw-test-image.yaml
   - path: patches/syw-test-env.yaml
