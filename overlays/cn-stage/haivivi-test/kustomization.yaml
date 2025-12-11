@@ -17,9 +17,9 @@ resources:
 # 标签
 labels:
   - pairs:
-      env: stage
-      region: cn
-      az: shanghai
+      env: stage-k
+      region: cn-k
+      az: shanghai-k
 
 # 镜像版本
 images:
