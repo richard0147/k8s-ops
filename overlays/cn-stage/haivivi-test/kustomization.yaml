@@ -20,6 +20,11 @@ labels:
       env: stage-k
       region: cn-k
       az: shanghai-k
+    # 是否更改pod的标签。metadata/labels and spec/template/metadata/labels
+    includeTemplates: true
+    # 是否更改selector的标签。metadata/labels, selectors, and spec/template/metadata/labels.
+    includeSelectors: false
+
 
 # 镜像版本
 images:

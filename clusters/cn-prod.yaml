@@ -1,10 +1,11 @@
 name: cn-prod
 consoleName: cn-haivivi-pord-vke-sh
 server: https://118.196.39.119:6443
+# application的label，不是资源的label
 labels:
-  region: cn-argo
-  az: shanghai-argo
-  env: prod-argo
+  region: cn
+  az: shanghai
+  env: prod
 autoSync: false
 selfHeal: false
 prune: true

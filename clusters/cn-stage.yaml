@@ -1,6 +1,7 @@
 name: cn-stage
 consoleName: cn-haivivi-stage-vke-sh
 server: https://kubernetes.default.svc
+# application的label，不是资源的label
 labels:
   region: cn
   az: shanghai
