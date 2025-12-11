@@ -33,5 +33,4 @@ images:
 
 # 特殊补丁
 patches:
-  - path: patches/syw-test-replica.yaml
-  - path: patches/syw-test-env.yaml
+  - path: patches/syw-test-deploy.yaml

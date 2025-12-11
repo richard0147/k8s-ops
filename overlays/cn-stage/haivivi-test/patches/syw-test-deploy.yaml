@@ -3,6 +3,7 @@ kind: Deployment
 metadata:
   name: syw-test
 spec:
+  replicas: 5
   template:
     spec:
       containers:
@@ -10,3 +11,10 @@ spec:
           env:
             - name: ENV
               value: stage
+          resources:
+            requests:
+              cpu: 200m
+              memory: 256Mi
+            limits:
+              cpu: 400m
+              memory: 512Mi
