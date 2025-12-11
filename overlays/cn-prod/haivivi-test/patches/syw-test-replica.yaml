@@ -10,5 +10,3 @@ spec:
           env:
             - name: ENV
               value: prod
-            - name: NS
-              value: test
