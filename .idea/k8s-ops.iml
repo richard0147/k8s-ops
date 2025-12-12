@@ -2,7 +2,22 @@
 <module type="WEB_MODULE" version="4">
   <component name="Go" enabled="true" />
   <component name="NewModuleRootManager">
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/admin-web" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/aiot" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/auth" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/bull-board" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/common" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/pal" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/palapp" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/palgear" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/pms" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/portal" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/portal-web" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/push" />
+      <excludeFolder url="file://$MODULE_DIR$/base/haivivi-advr/www" />
+      <excludeFolder url="file://$MODULE_DIR$/overlays/cn-stage/haivivi-advr/patches" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>

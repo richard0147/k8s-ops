@@ -9,19 +9,6 @@ spec:
   generators:
     - matrix:
         generators:
-#           # ① 集群维度：读 Git 文件 → 产生集群变量
-          - git:
-              repoURL: https://github.com/richard0147/k8s-ops.git
-              revision: HEAD
-              files:
-                - path: "clusters/*.yaml"
-          # ② 命名空间维度：扫描集群下所有 NS
-          - git:
-              pathParamPrefix: "ns"
-              repoURL: https://github.com/richard0147/k8s-ops.git
-              revision: HEAD
-              directories:
-                - path: "overlays/{{.name}}/*"        # name = 集群名
 #          - list:
 #              elements:
 #                - name: cn-stage
@@ -29,11 +16,24 @@ spec:
 #                  labels:
 #                    region: shanghai
 #                    env: stage
-#          - list:
-#              elements:
-#                - ns:
-#                    path:
-#                      basename: haivivi-test
+#         # ① 集群维度：读 Git 文件 → 产生集群变量
+          - git:
+              repoURL: https://github.com/richard0147/k8s-ops.git
+              revision: HEAD
+              files:
+                - path: "clusters/*.yaml"
+          # ② 命名空间维度：扫描集群下所有 NS
+#          - git:
+#              pathParamPrefix: "ns"
+#              repoURL: https://github.com/richard0147/k8s-ops.git
+#              revision: HEAD
+#              directories:
+#                - path: "overlays/{{.name}}/*"        # name = 集群名
+          - list:
+              elements:
+                - ns:
+                    path:
+                      basename: haivivi-test
 
   template:
     metadata:
@@ -44,15 +44,13 @@ spec:
         env: '{{.labels.env}}'
         appGroup: '{{.ns.path.basename}}'
     spec:
-#      project: default              # 或绑定具体 Project
-      project: "{{.ns.path.basename}}"              # 或绑定具体 Project
+      project: "{{.ns.path.basename}}"
       source:
         repoURL: https://github.com/richard0147/k8s-ops.git
         targetRevision: HEAD
         path: 'overlays/{{.name}}/{{.ns.path.basename}}'
       destination:
-        server: '{{.server}}'                # 来自 json
-#        namespace: default
+        server: '{{.server}}'
         namespace: '{{.ns.path.basename}}'
       revisionHistoryLimit: 3
       syncPolicy:
