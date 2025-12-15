@@ -30,7 +30,7 @@ spec:
           args:
             - |
               echo "DB_PASSWORD = $DB_PASSWORD"
-              echo "a = $a"
-              echo "b = $b"
-              echo "c = $c"
+              echo "a = $A"
+              echo "b = $B"
+              echo "c = $C"
               tail -f /etc/hosts
