@@ -1,7 +1,7 @@
 apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 # kustomization中不用定义ns，直接使用argocd的
-# namespace: haivivi-test
+namespace: haivivi-test
 
 # 统一前缀
 # 这里会影响sealed-secret资源
@@ -9,7 +9,7 @@ kind: Kustomization
 
 # 资源列表
 resources:
-  - patches/sealed.secret.yaml
+  - patches/sealed-secret.yaml
   - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 
