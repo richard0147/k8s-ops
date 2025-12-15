@@ -8,7 +8,7 @@ namePrefix: cn-stage-
 
 # 资源列表
 resources:
-  - secrets
+  - secrets/sealed.secret.yaml
   - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 
