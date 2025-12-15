@@ -1,0 +1,123 @@
+apiVersion: v1
+data:
+  syw-secret.key: dGVzdA==
+kind: Secret
+metadata:
+  labels:
+    az: shanghai-k
+    env: stage-k
+    region: cn-k
+  name: cn-stage-auth-ssl-fh9gh6h5k8
+type: Opaque
+---
+apiVersion: v1
+data:
+  DB_PASS: YWJjMTIz
+kind: Secret
+metadata:
+  labels:
+    az: shanghai-k
+    env: stage-k
+    region: cn-k
+  name: cn-stage-env-secret
+type: Opaque
+---
+apiVersion: v1
+data:
+  C: Mw==
+  a: MQ==
+  b: Mg==
+kind: Secret
+metadata:
+  labels:
+    az: shanghai-k
+    env: stage-k
+    region: cn-k
+  name: cn-stage-env-secret-file
+type: Opaque
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    az: shanghai-k
+    env: stage-k
+    region: cn-k
+  name: cn-stage-syw-test-svc
+spec:
+  ports:
+  - port: 80
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app: syw-test
+  type: ClusterIP
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: syw-test
+    az: shanghai-k
+    env: stage-k
+    region: cn-k
+  name: cn-stage-syw-test
+spec:
+  replicas: 5
+  selector:
+    matchLabels:
+      app: syw-test
+  template:
+    metadata:
+      labels:
+        app: syw-test
+        az: shanghai-k
+        env: stage-k
+        region: cn-k
+      name: syw-test
+    spec:
+      containers:
+      - args:
+        - |-
+          echo "DB_PASSWORD = $DB_PASSWORD"
+          echo "a = $A"
+          echo "b = $b"
+          echo "c = $C"
+          tail -f /etc/hosts
+        command:
+        - /bin/sh
+        - -c
+        env:
+        - name: ENV
+          value: stage
+        - name: DB_PASSWORD
+          valueFrom:
+            secretKeyRef:
+              key: DB_PASS
+              name: cn-stage-env-secret
+        envFrom:
+        - secretRef:
+            name: cn-stage-env-secret-file
+        image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx:1.26
+        imagePullPolicy: IfNotPresent
+        name: syw-test
+        ports:
+        - containerPort: 80
+          protocol: TCP
+        resources:
+          limits:
+            cpu: 400m
+            memory: 512Mi
+          requests:
+            cpu: 120m
+            memory: 256Mi
+        volumeMounts:
+        - mountPath: /root/ssl
+          name: ssl-volume
+          readOnly: true
+      restartPolicy: Always
+      volumes:
+      - name: ssl-volume
+        secret:
+          defaultMode: 420
+          secretName: cn-stage-auth-ssl-fh9gh6h5k8

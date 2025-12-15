@@ -8,24 +8,25 @@ namePrefix: cn-stage-
 
 # 资源列表
 resources:
+  - secrets
   - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 
 # 公共补丁
 #components:
 #  - ../../../components/cn-stage/
-generatorOptions:
-  disableNameSuffixHash: true
+#generatorOptions:
+#  disableNameSuffixHash: true
 
-secretGenerator:
-  - name: env-secret
-    envs:
-      - patches/env-secret.txt
-    type: Opaque
-  - name: env-secret-file
-    envs:
-      - patches/env-secret-file.txt
-    type: Opaque
+#secretGenerator:
+#  - name: env-secret
+#    envs:
+#      - patches/env-secret.txt
+#    type: Opaque
+#  - name: env-secret-file
+#    envs:
+#      - patches/env-secret-file.txt
+#    type: Opaque
 
 # 标签
 labels:
