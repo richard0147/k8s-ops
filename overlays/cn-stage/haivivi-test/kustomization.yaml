@@ -8,6 +8,7 @@ namePrefix: cn-stage-
 
 # 资源列表
 resources:
+  - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 
 # 公共补丁
@@ -30,7 +31,7 @@ labels:
 images:
   - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
 #    newTag: 1.25.5
-    newTag: 1.26
+    newTag: "1.26"
 #    newTag: latest
 
 # 特殊补丁

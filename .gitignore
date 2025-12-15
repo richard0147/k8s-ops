@@ -1,4 +1,4 @@
 
 base/haivivi-advr
-overlays/cn-stage/haivivi-advr
+overlays/*/haivivi-advr
 .idea

@@ -22,5 +22,14 @@ spec:
           ports:
             - containerPort: 80
               protocol: TCP
+          volumeMounts:
+            - mountPath: /root/ssl
+              name: ssl-volume
+              readOnly: true
       restartPolicy: Always
+      volumes:
+        - name: ssl-volume
+          secret:
+            defaultMode: 420
+            secretName: auth-ssl
 
