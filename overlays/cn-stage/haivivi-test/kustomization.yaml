@@ -4,7 +4,8 @@ kind: Kustomization
 # namespace: haivivi-test
 
 # 统一前缀
-namePrefix: cn-stage-
+# 这里会影响sealed-secret资源
+#namePrefix: cn-stage-
 
 # 资源列表
 resources:
