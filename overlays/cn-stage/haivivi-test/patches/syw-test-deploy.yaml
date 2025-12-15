@@ -8,6 +8,9 @@ spec:
     spec:
       containers:
         - name: syw-test
+          envFrom:
+            - secretRef:
+                name: env-secret-file
           env:
             - name: ENV
               value: stage
@@ -27,4 +30,7 @@ spec:
           args:
             - |
               echo "DB_PASSWORD = $DB_PASSWORD"
-              exec /docker-entrypoint.sh
+              echo "a = $a"
+              echo "b = $b"
+              echo "c = $c"
+              tail -f /etc/hosts

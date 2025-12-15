@@ -22,6 +22,11 @@ secretGenerator:
     envs:
       - patches/env-secret.txt
     type: Opaque
+  - name: env-secret-file
+    behavior: create
+    files:
+      - patches/env-secret-file.txt
+    type: Opaque
 
 # 标签
 labels:
