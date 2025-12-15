@@ -9,7 +9,7 @@ namespace: haivivi-test
 
 # 资源列表
 resources:
-  - patches/sealed-secret.yaml
+  - secrets/sealed-secret.yaml
   - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 
