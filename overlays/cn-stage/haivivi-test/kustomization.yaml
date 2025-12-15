@@ -9,7 +9,7 @@ kind: Kustomization
 
 # 资源列表
 resources:
-  - secrets/sealed.secret.yaml
+  - patches/sealed.secret.yaml
   - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 
@@ -19,6 +19,7 @@ resources:
 #generatorOptions:
 #  disableNameSuffixHash: true
 
+# 需要把secret单独成一个目录，这样方便kustomize只生成secret，给kubeseal使用
 #secretGenerator:
 #  - name: env-secret
 #    envs:
