@@ -10,7 +10,7 @@ spec:
         - name: syw-test
           envFrom:
             - secretRef:
-                name: env-secret
+                name: literals-secret
           env:
             - name: ENV
               value: stage
@@ -30,7 +30,7 @@ spec:
           args:
             - |
               echo "DB_PASSWORD = $DB_PASSWORD"
-              echo "a = $A"
+              echo "JAVA_HOME = $JAVA_HOME"
               echo "b = $b"
               echo "c = $C"
               tail -f /etc/hosts
