@@ -23,8 +23,7 @@ secretGenerator:
       - patches/env-secret.txt
     type: Opaque
   - name: env-secret-file
-    behavior: create
-    files:
+    envs:
       - patches/env-secret-file.txt
     type: Opaque
 
