@@ -6,6 +6,7 @@ namespace: haivivi-test
 #  env: prod
 
 resources:
+  - ../../../base/haivivi-test/common
   - ../../../base/haivivi-test/test-project
 #  - ../../../base/haivivi-test/test-ooo
 #  - ../../../base/haivivi-test/test-aaa
