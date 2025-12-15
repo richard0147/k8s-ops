@@ -14,6 +14,14 @@ resources:
 # 公共补丁
 #components:
 #  - ../../../components/cn-stage/
+generatorOptions:
+  disableNameSuffixHash: true
+
+secretGenerator:
+  - name: env-secret
+    envs:
+      - patches/env-secret.txt
+    type: Opaque
 
 # 标签
 labels:

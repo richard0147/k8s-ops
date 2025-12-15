@@ -11,6 +11,11 @@ spec:
           env:
             - name: ENV
               value: stage
+            - name: DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: DB_PASS
           resources:
             requests:
               cpu: 120m
@@ -18,3 +23,8 @@ spec:
             limits:
               cpu: 400m
               memory: 512Mi
+          command: [ "/bin/sh", "-c" ]
+          args:
+            - |
+              echo "DB_PASSWORD = $DB_PASSWORD"
+              exec /docker-entrypoint.sh
