@@ -10,7 +10,7 @@ spec:
         - name: syw-test
           envFrom:
             - secretRef:
-                name: env-secret-file
+                name: env-secret
           env:
             - name: ENV
               value: stage

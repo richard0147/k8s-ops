@@ -2,3 +2,5 @@
 base/haivivi-advr
 overlays/*/haivivi-advr
 .idea
+
+overlays/*/*/secrets/secret.ini
