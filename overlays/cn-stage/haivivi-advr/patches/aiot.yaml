@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: admin-web
+spec:
+  replicas: 1
+  template:
+    spec:
+      containers:
+        - name: aiot
+          envFrom:
+            - secretRef:
+                name: stage-env
+          resources:
+            requests:
+              cpu: 1
+              memory: 2Gi
+            limits:
+              cpu: 2
+              memory: 4Gi

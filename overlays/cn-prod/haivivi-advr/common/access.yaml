@@ -1,0 +1,28 @@
+## auth
+'*, /auth/v1/*': sys:root,sys:service,sys:auth-admin
+'*, /auth/v1/me/*': biz:user
+'*, /auth/v1/me': biz:user
+
+## pms
+'*, /pms/v1/*': sys:root,sys:service,sys:pms-admin
+'POST, /pms/v1/device-gen-records/*/@provision': sys:manufacturer-bot
+
+## aiot
+'*, /aiot/v1/*': sys:root,sys:service,sys:aiot-admin
+
+## pal
+'*, /pal/v1/*': sys:root,sys:service,sys:pal-admin
+'*, /pal/v1/device-auth/setup': biz:bubblepal-user
+
+## portal
+'*, /portal/v1/*': sys:root,sys:service,sys:portal-admin
+
+## push
+'*, /push/v1/*': sys:root,sys:service,sys:push-admin
+
+## palapp
+'*, /palapp/v1/*': biz:bubblepal-user
+
+## palgear
+'*, /palgear/v1/setup': biz:bubblepal-user
+'*, /palgear/v1/*': biz:bubblepal-gear

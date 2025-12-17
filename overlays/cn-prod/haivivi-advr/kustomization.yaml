@@ -1,0 +1,84 @@
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+# kustomization中可以不用定义ns，直接使用argocd的
+namespace: haivivi-advr
+# 统一前缀
+#namePrefix: cn-stage-
+
+# 资源列表
+resources:
+  - common
+  - secrets/sealed-secret.yaml
+  - ../../../base/haivivi-advr/admin-web
+  - ../../../base/haivivi-advr/aiot
+  - ../../../base/haivivi-advr/auth
+  - ../../../base/haivivi-advr/bull-board
+  - ../../../base/haivivi-advr/pal
+  - ../../../base/haivivi-advr/palapp
+  - ../../../base/haivivi-advr/palgear
+  - ../../../base/haivivi-advr/pms
+  - ../../../base/haivivi-advr/portal
+  - ../../../base/haivivi-advr/portal-web
+  - ../../../base/haivivi-advr/push
+  - ../../../base/haivivi-advr/www
+
+# 公共补丁
+#components:
+#  - ../../../components/cn-stage/
+
+# 标签
+#labels:
+#  - pairs:
+#      env: stage-k
+#      region: cn-k
+#      az: shanghai-k
+#    # 是否更改pod的标签。metadata/labels and spec/template/metadata/labels
+#    includeTemplates: true
+#    # 是否更改selector的标签。metadata/labels, selectors, and spec/template/metadata/labels.
+#    includeSelectors: false
+
+# 镜像版本
+images:
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-admin-web
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-aiot
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-auth
+    newTag: v1.60.0
+  - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/bull-board
+    newTag: latest
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-pal
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-palapp
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-palgear
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-pms
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-portal
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-portal-web
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-push
+    newTag: v1.60.0
+  - name: registry.cn-hongkong.aliyuncs.com/36node/haivivi-www
+    newTag: v1.60.0
+  - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/curl
+    newTag: 7.83.1
+
+
+
+# 特殊补丁
+patches:
+  - path: patches/admin-web.yaml
+  - path: patches/aiot.yaml
+  - path: patches/auth.yaml
+  - path: patches/bull-board.yaml
+  - path: patches/pal.yaml
+  - path: patches/palapp.yaml
+  - path: patches/palgear.yaml
+  - path: patches/pms.yaml
+  - path: patches/portal.yaml
+  - path: patches/portal-web.yaml
+  - path: patches/push.yaml
+  - path: patches/www.yaml

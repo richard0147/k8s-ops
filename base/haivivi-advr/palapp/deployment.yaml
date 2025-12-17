@@ -1,0 +1,110 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels:
+    app: palapp
+  name: palapp
+spec:
+  progressDeadlineSeconds: 600
+  replicas: 2
+  revisionHistoryLimit: 10
+  selector:
+    matchLabels:
+      app: palapp
+  strategy:
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: palapp
+    spec:
+      containers:
+      - image: registry.cn-hongkong.aliyuncs.com/36node/haivivi-palapp
+        imagePullPolicy: IfNotPresent
+        name: palapp
+        ports:
+        - containerPort: 9527
+          name: http
+          protocol: TCP
+        readinessProbe:
+          failureThreshold: 3
+          httpGet:
+            path: /palapp/v1/hello
+            port: http
+            scheme: HTTP
+          initialDelaySeconds: 5
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 1
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+        volumeMounts:
+        - mountPath: /app/apps/palapp/access.yaml
+          name: access-volume
+          subPath: access.yaml
+        - mountPath: /app/ssl
+          name: ssl-volume
+          readOnly: true
+      dnsPolicy: ClusterFirst
+      initContainers:
+      - command:
+        - sh
+        - -c
+        - until curl -sf http://auth/auth/v1/hello; do echo waiting for auth service
+          ready; sleep 10; done;
+        image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/curl:7.83.1
+        imagePullPolicy: IfNotPresent
+        name: wait-for-auth
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - command:
+        - sh
+        - -c
+        - until curl -sf http://aiot/aiot/v1/hello; do echo waiting for aiot service
+          ready; sleep 10; done;
+        image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/curl:7.83.1
+        imagePullPolicy: IfNotPresent
+        name: wait-for-aiot
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - command:
+        - sh
+        - -c
+        - until curl -sf http://pal/pal/v1/hello; do echo waiting for pal service
+          ready; sleep 10; done;
+        image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/curl:7.83.1
+        imagePullPolicy: IfNotPresent
+        name: wait-for-pal
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      - command:
+        - sh
+        - -c
+        - until curl -sf http://pms/pms/v1/hello; do echo waiting for pms service
+          ready; sleep 10; done;
+        image: cn-haivivi-cn-shanghai.cr.volces.com/libiary/curl:7.83.1
+        imagePullPolicy: IfNotPresent
+        name: wait-for-pms
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
+      volumes:
+      - configMap:
+          defaultMode: 420
+          name: config
+        name: access-volume
+      - name: ssl-volume
+        secret:
+          defaultMode: 420
+          secretName: auth-ssl

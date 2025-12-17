@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: www
+spec:
+  replicas: 2
+  template:
+    spec:
+      containers:
+        - name: www
+          envFrom:
+            - secretRef:
+                name: www-env
+          resources:
+            requests:
+              cpu: 200m
+              memory: 512Mi
+            limits:
+              cpu: 400m
+              memory: 1Gi
