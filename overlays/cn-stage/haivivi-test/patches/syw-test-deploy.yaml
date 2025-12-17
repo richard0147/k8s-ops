@@ -19,6 +19,11 @@ spec:
                 secretKeyRef:
                   name: env-secret
                   key: DB_PASS
+            - name: C
+              valueFrom:
+                secretKeyRef:
+                  name: env-secret
+                  key: b
           resources:
             requests:
               cpu: 120m
