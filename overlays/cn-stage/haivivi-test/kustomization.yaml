@@ -45,8 +45,8 @@ labels:
 # 镜像版本
 images:
   - name: cn-haivivi-cn-shanghai.cr.volces.com/libiary/nginx
-    newTag: 1.25.5
-#    newTag: "1.26"
+#    newTag: 1.25.5
+    newTag: "1.26"
 #    newTag: latest
 
 # 特殊补丁

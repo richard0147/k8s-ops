@@ -4,3 +4,4 @@
 
 overlays/*/*/secrets/*.ini
 overlays/*/*/secrets/*.key
+overlays/cn-stage/haivivi-advr/secrets/docker-config.json
